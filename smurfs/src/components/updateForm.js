@@ -9,17 +9,16 @@ class updateForm extends React.Component {
         placeholder: {
             name: '',
             age: '',
-            height: ''
+            height: '',
         },
-        target: {
-            name: '',
-            age: '',
-            height: ''
-        }
+        updated: {}
     }
 
     componentDidMount() {
-        // this.setState({target: this.props.targetSmurf})
+        const {smurfs, match} = this.props;
+        const targetSmurf = smurfs.find(smurfs => smurfs.id === Number(match.params.id))
+        console.log(targetSmurf);
+        this.setState({updated: targetSmurf});
     }
     
   handleChanges = e => {
@@ -33,20 +32,21 @@ class updateForm extends React.Component {
 
   updateHandler = e => {
     e.preventDefault();
-    this.setState({placeholder: {
-        ...this.state.placeholder,
-        id: this.props.target.id
-    }})
-    this.props.updateSmurf(this.state.placeholder);
+    //update!
+    this.props.updateSmurf(this.state);
+    //resets state
     this.setState({placeholder: {
       name: '',
       age: '',
       height: ''
     }, 
-    target: {}})
-  }
+    updated: {}})
+    //redirect to smurf list
+    this.props.history.push('/smurfs');
+}
 
     render() {
+        console.log(this.state.target);
         return (
          <div className="form-container">
             <h2>Update Smurf </h2>
@@ -81,7 +81,7 @@ class updateForm extends React.Component {
 
 const mapStateToProps = state => ({
     isUpdating: state.addingSmurf,
-    target: state.targetSmurf
+    smurfs: state.smurfs
 });
 
 export default connect(mapStateToProps, { updateSmurf })(updateForm);

@@ -18,26 +18,19 @@ import './App.css';
  Just remember, `how do I `connect` my components to redux?`
  `How do I ensure that my component links the state to props?`
  */
-class App extends Component {
-  state = {
-    smurfs: []
-  }
-
-  render() {
+function App() {
     return (
       <Router>
       <div className="App">
         <h4><Link to="/addsmurf">Add a Smurf</Link></h4>
         <h4><Link to="/smurfs"> View Smurf Village </Link></h4>
-        {/* {this.props.smurfs.map(smurf => <Smurf key={smurf.name} smurf={smurf} />)} */}
       </div> 
 
       <Route path="/addsmurf" component={addForm} />
       <Route path="/smurfs" component={Smurfs} />
-      <Route path="/updateform" component={updateForm} />
+      <Route path="/updateform/:id" component={updateForm} />
       </Router>
     );
-  }
 }
 
 

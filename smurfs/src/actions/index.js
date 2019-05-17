@@ -60,23 +60,11 @@ export const addSmurf = smurf => dispatch => {
     })
 }
 
-export const targetSmurf = id => dispatch => {
-  dispatch({type: GET_START});
-  return axios
-    .get(`http://localhost:3333/smurfs/${id}`)
-    .then(res => {
-      console.log(res.data);
-      dispatch({type: GET_SUCCESS, payload: res.data});
-    })
-    .catch(err => {
-      dispatch({type: GET_FAILURE});
-    })
-}
-
 export const updateSmurf = smurf => dispatch => {
   dispatch({type: UPDATE_START});
+  console.log(smurf);
   return axios
-    .put(`http://localhost:3333/smurfs/${smurf.id}`, smurf)
+    .put(`http://localhost:3333/smurfs/${smurf.updated.id}`, smurf.placeholder)
     .then(res => {
       console.log(res.data);
       dispatch({type: UPDATE_SUCCESS, payload: res.data});

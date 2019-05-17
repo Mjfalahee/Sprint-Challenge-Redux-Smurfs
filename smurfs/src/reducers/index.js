@@ -31,7 +31,7 @@ import {
 
 const initialState = {
    smurfs: [],
-   targetSmurf: {},
+   targetSmurf: [],
    fetchingSmurf: false,
    fetchingSmurfs: false,
    addingSmurf: false,
