@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { getSmurfs } from '../actions';
 
 import Smurf from './Smurf';
+import './App.css';
 
 class Smurfs extends Component {
     state = {
@@ -19,7 +20,7 @@ class Smurfs extends Component {
             return <div> Grabbing Smurfs </div>
         }
         return (
-            <div className="App">
+            <div className="smurfs-container">
                 {this.props.smurfs.map(smurf => <Smurf key={smurf.name} smurf={smurf} />)}
             </div>
         )};

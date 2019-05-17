@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addSmurf } from '../actions';
+import './App.css';
 
 
 class addForm extends React.Component {
@@ -33,9 +34,9 @@ class addForm extends React.Component {
 
     render() {
         return (
-         <div>
+         <div className="form-container">
             <h2>Add a new Smurf </h2>
-            <form onSubmit={this.addHandler}>
+            <form className="form" onSubmit={this.addHandler}>
                 <input
                     type="text"
                     name="name"

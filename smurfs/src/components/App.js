@@ -26,8 +26,8 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
-        <Link to="/addsmurf">Add a Smurf</Link>
-        <Link to="/smurfs"> View Smurf Village </Link>
+        <h4><Link to="/addsmurf">Add a Smurf</Link></h4>
+        <h4><Link to="/smurfs"> View Smurf Village </Link></h4>
         {/* {this.props.smurfs.map(smurf => <Smurf key={smurf.name} smurf={smurf} />)} */}
       </div> 
 
