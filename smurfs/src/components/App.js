@@ -33,7 +33,7 @@ class App extends Component {
     });
   };
 
-  AddHandler = e => {
+  addHandler = e => {
     e.preventDefault();
     this.props.addSmurf(this.state.smurf);
     this.setState({smurf: {
@@ -52,7 +52,7 @@ class App extends Component {
       <div className="App">
         {this.props.smurfs.map(smurf => <Smurf key={smurf.name} smurf={smurf} />)}
         <h2>Add a new Smurf </h2>
-        <form>
+        <form onSubmit={this.addHandler}>
           <input
           type="text"
           name="name"
