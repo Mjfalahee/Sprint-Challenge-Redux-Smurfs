@@ -23,8 +23,23 @@ In this challenge, you are to build the Smurfs village once again, only this tim
 Demonstrate your understanding of this Sprint's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 - [ ] In your own words, describe `actions`, `reducers` and the `store` and their role in Redux. What does each piece do? Why is the store known as a 'single source of truth' in a redux application?
+
+**Actions** are nice and neat little packages of data types, and what we want to dispatch along to our reducer with each of those types. They help break down a larger problem into multiple, manageable types for our reducers to take care of.
+
+**Reducers** take the information dispatched to them by our actions, and use it to update the state. After that, the state is passed along to where we need it. 
+
+The **Store** is an object that holds the state of our applications. It's the single source of truth because it's the only place that knows what the heck is happening, because the components don't reeeeally have state themselves.
+
 - [ ] What is the difference between Application state and Component state? When would be a good time to use one over the other?
+
+**Application** state is in a sense, the store. The only way to change it would be to create actions and reducers and dispatch actions to those reducers. 
+**Component** state is what we learned first in react. It's limited to a single component and can only be passed along with components.
+
+I think redux is much more useful in larger projects because it allows you to easily pass information along between components asynchronously. I'd say use Application state most of the time, but for smaller projects or smaller pieces of your work it may be possible to get by with Component state. If you have lots of moving parts, definitely use Application state.
+
 - [ ] Describe `redux-thunk`, what does it allow us to do? How does it change our `action-creators`?
+
+**redux-thunk** helps us manage the communication between our actions and reducers. It acts as a middle-man in order to let us perform API calls within our action-creators, so we can pass along data to our reducers. It acts by looking at each item that is passed along to the reducers and stopping all functions returned from functions from being passed and instead it will invoke whatever function is returned and THEN pass it. It's very confusing at first, but then it makes sense when you think about it. 
 
 ## Project Set Up
 
