@@ -8,7 +8,13 @@ import {
   FETCH_FAILURE,
   ADD_START,
   ADD_SUCCESS,
-  ADD_FAILURE
+  ADD_FAILURE,
+  UPDATE_SUCCESS,
+  UPDATE_START,
+  UPDATE_FAILURE,
+  GET_START,
+  GET_SUCCESS,
+  GET_FAILURE
 } from '../actions'
 
 /*
@@ -25,6 +31,7 @@ import {
 
 const initialState = {
    smurfs: [],
+   targetSmurf: {},
    fetchingSmurfs: false,
    addingSmurf: false,
    updatingSmurf: false,
