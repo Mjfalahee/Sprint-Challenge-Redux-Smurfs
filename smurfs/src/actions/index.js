@@ -26,5 +26,29 @@ export const ADD_FAILURE = 'ADD_FAILURE';
 */
 
 export const getSmurfs = () => dispatch => {
+  dispatch({type: FETCH_START});
+  return axios 
+    .get('http://localhost:3333/smurfs')
+    .then(res => {
+      console.log(res.data);
+      dispatch({type:FETCH_SUCCESS, payload: res.data});
+    })
+    .catch(err => {
+      dispatch({type: FETCH_FAILURE});
+    })
+}
+
+export const addSmurf = smurf => dispatch => {
+  dispatch({type: ADD_START});
+  return axios 
+    .post('http://localhost:3333/smurfs', smurf)
+    .then( res => {
+      console.log(res.data);
+      dispatch({type: ADD_SUCCESS, payload: res.data});
+    })
+    .catch(err => {
+      dispatch({type: ADD_FAILURE});
+    })
+
 
 }
