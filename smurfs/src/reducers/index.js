@@ -32,6 +32,7 @@ import {
 const initialState = {
    smurfs: [],
    targetSmurf: {},
+   fetchingSmurf: false,
    fetchingSmurfs: false,
    addingSmurf: false,
    updatingSmurf: false,
@@ -88,6 +89,44 @@ function reducer(state = initialState, action) {
       }
       default:
         return state;
+    case GET_START:
+      return {
+        ...state, 
+        fetchingSmurf: true,
+        error: ''
+      }
+    case GET_SUCCESS:
+      return {
+        ...state,
+        fetchingSmurf: false,
+        targetSmurf: action.payload,
+        error: ''
+      }
+    case GET_FAILURE: 
+      return {
+        ...state,
+        fetchingSmurf: false,
+        error: 'Target missed'
+      }
+    case UPDATE_START:
+      return {
+        ...state,
+        updatingSmurf: true,
+        error: ''
+      }
+    case UPDATE_SUCCESS: 
+      return {
+        ...state,
+        smurfs: action.payload,
+        updatingSmurf: false,
+        error: ''
+      }
+    case UPDATE_FAILURE:
+      return {
+        ...state,
+        updatingSmurf: false,
+        error: 'Updating Failed'
+      }
   }
 }
 

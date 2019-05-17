@@ -6,17 +6,26 @@ import './App.css';
 
 class updateForm extends React.Component {
     state = {
-        smurf: {}
+        placeholder: {
+            name: '',
+            age: '',
+            height: ''
+        },
+        target: {
+            name: '',
+            age: '',
+            height: ''
+        }
     }
 
     componentDidMount() {
-        fetchSmurf();
+        // this.setState({target: this.props.targetSmurf})
     }
     
   handleChanges = e => {
     this.setState({
-      smurf: {
-        ...this.state.smurf,
+      placeholder: {
+        ...this.state.placeholder,
         [e.target.name]: e.target.value
       }
     });
@@ -24,52 +33,55 @@ class updateForm extends React.Component {
 
   updateHandler = e => {
     e.preventDefault();
-    this.props.updateSmurf(this.state.smurf);
-    this.setState({smurf: {
+    this.setState({placeholder: {
+        ...this.state.placeholder,
+        id: this.props.target.id
+    }})
+    this.props.updateSmurf(this.state.placeholder);
+    this.setState({placeholder: {
       name: '',
       age: '',
       height: ''
-    }})
+    }, 
+    target: {}})
   }
 
     render() {
         return (
          <div className="form-container">
-            <h2>Add a new Smurf </h2>
+            <h2>Update Smurf </h2>
             <form className="form" onSubmit={this.updateHandler}>
                 <input
                     type="text"
                     name="name"
-                    placeholder={this.props.smurf.name}
-                    value={this.state.smurf.name}
+                    placeholder="Name"
+                    value={this.state.placeholder.name}
                     onChange={this.handleChanges}>
                 </input>
                 <input
                     type="text"
                     name="age"
-                    placeholder={this.props.smurf.age}
-                    value={this.state.smurf.age}
+                    placeholder="Age"
+                    value={this.state.placeholder.age}
                     onChange={this.handleChanges}>
                 </input>
                 <input
                     type="text"
                     name="height"
-                    placeholder={this.props.smurf.height}
-                    value={this.state.smurf.height}
+                    placeholder="Height"
+                    value={this.state.placeholder.height}
                     onChange={this.handleChanges}>
                 </input>
 
                 <button>Submit</button>
          </form> 
         </div>
-
         )}
-
 }
 
 const mapStateToProps = state => ({
-    isUpdating: state.addingSmurf
-    smurf: state.targetSmurf
+    isUpdating: state.addingSmurf,
+    target: state.targetSmurf
 });
 
-export default connect(mapStateToProps, { addSmurf })(addForm);
+export default connect(mapStateToProps, { updateSmurf })(updateForm);

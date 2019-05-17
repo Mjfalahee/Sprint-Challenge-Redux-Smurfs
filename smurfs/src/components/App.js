@@ -5,6 +5,7 @@ import { getSmurfs } from '../actions';
 
 import Smurfs from './Smurfs';
 import addForm from './addForm';
+import updateForm from './updateForm';
 
 // router stuff
 import {BrowserRouter as Router, Route, Link } from 'react-router-dom';
@@ -33,6 +34,7 @@ class App extends Component {
 
       <Route path="/addsmurf" component={addForm} />
       <Route path="/smurfs" component={Smurfs} />
+      <Route path="/updateform" component={updateForm} />
       </Router>
     );
   }

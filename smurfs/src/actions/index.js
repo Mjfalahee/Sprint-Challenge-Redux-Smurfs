@@ -60,7 +60,7 @@ export const addSmurf = smurf => dispatch => {
     })
 }
 
-export const getSmurf = id => dispatch => {
+export const targetSmurf = id => dispatch => {
   dispatch({type: GET_START});
   return axios
     .get(`http://localhost:3333/smurfs/${id}`)
